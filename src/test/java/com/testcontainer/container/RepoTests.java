@@ -2,6 +2,7 @@ package com.testcontainer.container;
 
 import com.testcontainer.api.entity.Customer;
 import com.testcontainer.api.repository.IRepository;
+import com.testcontainer.container.config.ModelConfig;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeoutException;
 import static com.testcontainer.databuilder.CustomerBuilder.customerWithName;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RepoTests extends ConfigTests {
+public class RepoTests extends ModelConfig {
 
   final private String enabledTest = "true";
   private List<Customer> customerList;
@@ -35,13 +36,13 @@ public class RepoTests extends ConfigTests {
 
   @BeforeAll
   public static void beforeAll() {
-    ConfigTests.beforeAll();
+    ModelConfig.beforeAll();
   }
 
 
   @AfterAll
   public static void afterAll() {
-    ConfigTests.afterAll();
+    ModelConfig.afterAll();
   }
 
 

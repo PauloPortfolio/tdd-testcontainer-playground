@@ -3,6 +3,8 @@ package com.testcontainer.compose;
 import com.github.javafaker.Faker;
 import com.testcontainer.api.entity.Customer;
 import com.testcontainer.api.service.ICustomerService;
+import com.testcontainer.compose.config.ControllerConfig;
+import com.testcontainer.compose.config.ModelConfig;
 import io.restassured.http.ContentType;
 import io.restassured.module.webtestclient.RestAssuredWebTestClient;
 import org.junit.jupiter.api.*;
@@ -31,7 +33,7 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.http.HttpStatus.*;
 
-public class ControllerTests extends ConfigControllerCompose {
+public class ControllerTests extends ControllerConfig {
 
     private List<Customer> customerList;
     private Customer customerWithId;
@@ -39,7 +41,7 @@ public class ControllerTests extends ConfigControllerCompose {
 
 
     @Container
-    private static final DockerComposeContainer<?> compose = new ConfigTests().compose;
+    private static final DockerComposeContainer<?> compose = new ModelConfig().compose;
 
 
     // MOCKED-SERVER: WEB-TEST-CLIENT(non-blocking client)'
@@ -55,13 +57,13 @@ public class ControllerTests extends ConfigControllerCompose {
 
     @BeforeAll
     static void beforeAll() {
-        ConfigTests.beforeAll();
+        ModelConfig.beforeAll();
     }
 
 
     @AfterAll
     static void afterAll() {
-        ConfigTests.afterAll();
+        ModelConfig.afterAll();
         compose.close();
     }
 
@@ -109,10 +111,10 @@ public class ControllerTests extends ConfigControllerCompose {
     @Test
     void checkServices() {
 
-        new ConfigTests().checkTestcontainerComposeService(
+        new ModelConfig().checkTestcontainerComposeService(
              compose,
-             ConfigTests.SERVICE,
-             ConfigTests.SERVICE_PORT
+             ModelConfig.SERVICE,
+             ModelConfig.SERVICE_PORT
                                                           );
     }
 

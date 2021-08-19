@@ -4,6 +4,7 @@ import com.testcontainer.api.entity.Customer;
 import com.testcontainer.api.service.CustomerService;
 import com.testcontainer.api.repository.IRepository;
 import com.testcontainer.api.service.ICustomerService;
+import com.testcontainer.container.config.ModelConfig;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -25,7 +26,7 @@ import static com.testcontainer.databuilder.CustomerBuilder.customerWithName;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // https://www.baeldung.com/spring-data-mongodb-reactive
-public class ServiceTests extends ConfigTests {
+public class ServiceTests extends ModelConfig {
 
   final private String enabledTest = "true";
   private List<Customer> customerList;
@@ -40,13 +41,13 @@ public class ServiceTests extends ConfigTests {
 
   @BeforeAll
   public static void beforeAll() {
-    ConfigTests.beforeAll();
+    ModelConfig.beforeAll();
   }
 
 
   @AfterAll
   public static void afterAll() {
-    ConfigTests.afterAll();
+    ModelConfig.afterAll();
   }
 
 

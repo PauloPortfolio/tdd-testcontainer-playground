@@ -1,4 +1,4 @@
-package com.testcontainer.container;
+package com.testcontainer.container.config;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -29,7 +29,7 @@ b) USO ALTERNATIVO (DataMongoTest/SpringBootTest) - CONFLITAM ENTRE-SI:
 @DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)
 @Slf4j
 @ActiveProfiles("test")
-public class ConfigTests extends ContainerConfig {
+public class ModelConfig extends ContainerConfig {
 
   final static Long MAX_TIMEOUT = 15000L;
   final static ContentType JSON_CONTENT_TYPE = ContentType.JSON;

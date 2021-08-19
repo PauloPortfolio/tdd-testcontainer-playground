@@ -1,4 +1,4 @@
-package com.testcontainer.compose;
+package com.testcontainer.compose.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
@@ -13,8 +13,7 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @DirtiesContext(classMode = AFTER_EACH_TEST_METHOD)
 @Slf4j
-@Testcontainers
-public class ConfigControllerCompose {
+public class ControllerConfig extends ComposeConfig {
 
 }
 

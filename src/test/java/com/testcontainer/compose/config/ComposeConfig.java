@@ -1,4 +1,4 @@
-package com.testcontainer.compose;
+package com.testcontainer.compose.config;
 
 import org.testcontainers.containers.DockerComposeContainer;
 import org.testcontainers.containers.wait.strategy.Wait;

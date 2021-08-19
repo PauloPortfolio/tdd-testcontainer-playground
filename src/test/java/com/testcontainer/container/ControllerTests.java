@@ -3,6 +3,8 @@ package com.testcontainer.container;
 import com.github.javafaker.Faker;
 import com.testcontainer.api.entity.Customer;
 import com.testcontainer.api.service.ICustomerService;
+import com.testcontainer.container.config.ModelConfig;
+import com.testcontainer.container.config.ControllerConfig;
 import io.restassured.http.ContentType;
 import io.restassured.module.webtestclient.RestAssuredWebTestClient;
 import org.junit.jupiter.api.*;
@@ -33,9 +35,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.HttpStatus.*;
 
-@SpringBootTest(webEnvironment = RANDOM_PORT)
-@AutoConfigureWebTestClient
-public class ControllerTests extends ContainerConfig {
+//@SpringBootTest(webEnvironment = RANDOM_PORT)
+//@AutoConfigureWebTestClient
+public class ControllerTests extends ControllerConfig {
 
   final private String enabledTest = "true";
   private List<Customer> customerList;
@@ -55,13 +57,13 @@ public class ControllerTests extends ContainerConfig {
 
   @BeforeAll
   public static void beforeAll() {
-    ConfigTests.beforeAll();
+    ModelConfig.beforeAll();
   }
 
 
   @AfterAll
   public static void afterAll() {
-    ConfigTests.afterAll();
+    ModelConfig.afterAll();
   }
 
 

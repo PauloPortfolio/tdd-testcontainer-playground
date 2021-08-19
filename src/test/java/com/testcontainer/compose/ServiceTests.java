@@ -4,6 +4,7 @@ import com.testcontainer.api.entity.Customer;
 import com.testcontainer.api.service.CustomerService;
 import com.testcontainer.api.repository.IRepository;
 import com.testcontainer.api.service.ICustomerService;
+import com.testcontainer.compose.config.ModelConfig;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testcontainers.containers.DockerComposeContainer;
@@ -23,7 +24,7 @@ import java.util.concurrent.TimeoutException;
 
 import static com.testcontainer.databuilder.CustomerBuilder.customerWithName;
 
-public class ServiceTests extends ConfigTests {
+public class ServiceTests extends ModelConfig {
 
   private Customer customer1;
   private Customer customer2;
@@ -31,7 +32,7 @@ public class ServiceTests extends ConfigTests {
   private List<Customer> customerList;
 
   @Container
-  private static final DockerComposeContainer<?> compose = new ConfigTests().compose;
+  private static final DockerComposeContainer<?> compose = new ModelConfig().compose;
 
 
   @Autowired
@@ -41,14 +42,14 @@ public class ServiceTests extends ConfigTests {
 
 
   @BeforeAll
-  static void beforeAll() {
-    ConfigTests.beforeAll();
+  static void setUpAll() {
+    ModelConfig.beforeAll();
   }
 
 
   @AfterAll
-  static void afterAll() {
-    ConfigTests.afterAll();
+  static void tearDownAll() {
+    ModelConfig.afterAll();
     compose.close();
   }
 
@@ -84,8 +85,8 @@ public class ServiceTests extends ConfigTests {
 
     super.checkTestcontainerComposeService(
          compose,
-         ConfigTests.SERVICE,
-         ConfigTests.SERVICE_PORT
+         ModelConfig.SERVICE,
+         ModelConfig.SERVICE_PORT
                                           );
   }
 
